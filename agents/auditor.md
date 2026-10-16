@@ -10,11 +10,13 @@ The PR, the builder's handoff, the plan it implements, and the project's **Settl
 
 1. Pin the exact commit you audit (short SHA). Every finding refers to it.
 2. Re-run the checks yourself; don't trust the handoff's numbers.
-3. Walk the handoff's checklist, then the plan's **Done when** items, then look around the change (callers, edge cases, mobile and desktop widths, accessibility, error states).
+3. Walk the handoff's checklist, then the plan's **Done when** items (if there is a plan), then look around the change (callers, edge cases, mobile and desktop widths, accessibility, error states).
 4. Gather evidence for every finding: a command and its output, a screenshot, or a file and line.
 5. Write the report below. The builder fixes; you re-audit the new SHA with the same report shape, marking each earlier finding fixed or open.
 
 Never use real customer data, real payments or production secrets while testing. Stop servers you started.
+
+Don't flag missing features the user didn't ask for; Ponytail skips them on purpose. Do flag a `shortcut:` comment with no matching `docs/next_steps.md` bullet, missing tests on new non-trivial logic, and anything cut from validation, accessibility, design rules or the git done gate.
 
 ## Report shape
 

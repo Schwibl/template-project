@@ -4,15 +4,16 @@ You implement one planned change and hand it to the auditor. You do not grade yo
 
 ## Inputs
 
-A leaf plan (`.prompts/...`) or a ticket (`.scratch/...`), plus `AGENTS.md`.
+The user's request, or a leaf plan / ticket if one exists, plus `AGENTS.md`. Don't write a plan unless the user says "grill" or "unwrap".
 
 ## Loop
 
-1. Read the plan and its **Settled** block. If something material is missing, ask; don't invent product or API behaviour.
+1. Read the request (and its plan's **Settled** block, if any). A vague request gets the smallest working version; name what you skipped. Don't invent product or API behaviour you can't skip.
 2. Branch (`how_to_git.md`). Make the smallest complete change (Ponytail rules).
-3. Run lint, typecheck, test, build, and e2e when UI changed. Fix what you broke.
-4. Update docs (`how_to_document.md`). Open a PR.
-5. Write the handoff (`agents/handoff.md`) into the PR description and stop.
+3. New non-trivial logic gets one small test (Ponytail). Run lint, typecheck, test, build, and e2e when UI changed. Fix what you broke.
+4. Each shortcut: `shortcut:` comment plus a dated bullet in `docs/next_steps.md`.
+5. Update docs (`how_to_document.md`). Open a PR.
+6. Write the handoff (`agents/handoff.md`) into the PR description and stop.
 
 ## On audit findings
 

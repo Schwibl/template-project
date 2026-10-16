@@ -1,9 +1,11 @@
 ---
 name: grill
-description: Interview the user to settle a fuzzy feature before planning or code. Use when requirements, product behaviour or API shape are ambiguous.
+description: Interview the user to settle a fuzzy feature before planning or code. Use only when the user explicitly says "grill" or "unwrap"; otherwise build the smallest working version.
 ---
 
 # Grill
+
+Run only on an explicit "grill" or "unwrap" from the user.
 
 1. Read the code, `CONTEXT.md` and `docs/adr/` first. Never ask what the repo already answers.
 2. List the open decisions. Drop anything already **Settled**.

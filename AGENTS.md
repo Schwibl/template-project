@@ -1,14 +1,15 @@
 # Agent pointers
 
-Thin, always-loaded routing. Open the named file when its trigger fires. Standards live in the linked files, not here.
+Thin, always-loaded routing plus the Ponytail working rules (imported at the end). Open the named file when its trigger fires.
 
 ## Mandatory
 
-- **cook**: a fuzzy feature, a roadmap, or "plan this": read `.prompts/base/how_to_cook.md`
+- **cook**: only when the user explicitly says "grill" or "unwrap": read `.prompts/base/how_to_cook.md`. Otherwise build the smallest working version (Ponytail).
 - **git**: before branching, committing, or opening a PR: read `.prompts/base/how_to_git.md`
 - **document**: before claiming a feature done or leaving work incomplete: read `.prompts/base/how_to_document.md`
 - **role**: when you are told you are the builder or the auditor: read `agents/builder.md` or `agents/auditor.md`, and hand off with `agents/handoff.md`
-- **skill**: non-trivial work: pick a skill from `skills/` (`grill`, `handoff`, `audit`)
+- **skill**: `skills/grill` only on "grill"/"unwrap"; `skills/handoff` and `skills/audit` when handing off or reviewing
+- **shortcut**: any known limit you leave behind: `shortcut:` comment plus a dated bullet in `docs/next_steps.md`
 
 ## Repo facts
 
@@ -18,11 +19,15 @@ Thin, always-loaded routing. Open the named file when its trigger fires. Standar
 
 ## Precedence
 
-Where a Ponytail rule below clashes with a project rule above or in `.prompts/base/*`, the project rule wins. Known overlap: Ponytail's "smallest version" applies inside a planned leaf, not instead of planning it (`how_to_cook.md`).
+The Ponytail rules below win over every other rule in this repo, with these guards:
+
+1. **Shortcuts are tracked.** Every shortcut gets the `shortcut: <limit>, <when to upgrade>` comment in code **and** a dated bullet in `docs/next_steps.md` (`- YYYY-MM-DD: <file> – <limit>, <when to upgrade>`).
+2. **Plan-first only on request.** The grill → spec → tickets loop (`how_to_cook.md`, `skills/grill`) runs only when the user explicitly says "grill" or "unwrap". Otherwise build the smallest working version.
+3. **Never cut.** Hard design rules (if the project has any), accessibility, and the git done gate (feature branch, commit format, PR, per `how_to_git.md`) count as "anything the user asked for".
 
 ## Ponytail rules (imported)
 
-Copied verbatim from [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) `AGENTS.md` (MIT License, © DietrichGebert), headings shifted down two levels.
+Source: https://raw.githubusercontent.com/DietrichGebert/ponytail/main/AGENTS.md ([DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail), MIT License, fetched 2026-10-16). Copied verbatim below, headings moved down two levels; the one indented _Project addition_ line is ours.
 
 ### Ponytail, lazy senior dev mode
 
@@ -45,6 +50,7 @@ Take the first option that fully works:
 
 - Be lazy about the solution, never about the change itself: finish every part the task needs, including the callers, tests and fixtures your change breaks.
 - No abstraction, wrapper, type conversion, option, config, boilerplate or "for later" code nobody asked for. Keep values in the form the platform already gives you. Deletion beats addition. Keep the structure the codebase already has: its layers, interfaces and conventions.
+  - _Project addition:_ here that means `src/` for app code with tests beside it (`*.test.ts`), `e2e/` for Playwright specs, `agents/` for role prompts, `skills/<name>/SKILL.md` for skills, `.prompts/base/` for habits, `docs/adr/` for decisions, and one root `package.json`.
 - The shortest working diff wins, once you know everything it must touch. A one-liner that needs decoding is not short.
 - Comment only the why the code cannot show, in one line.
 - Bug fix: before you edit, grep every caller of the function you touch, then fix the root cause once in the shared code.

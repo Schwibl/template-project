@@ -1,6 +1,6 @@
 # How to cook (plan before you build)
 
-The work pattern for anything bigger than a one-line fix: **wrap → unwrap → grill → leaf → implement**. Skip it for fixes the user already specified exactly.
+Use this **only when the user explicitly says "grill" or "unwrap"**: **wrap → unwrap → grill → leaf → implement**. Otherwise build the smallest working version (Ponytail rules in `AGENTS.md`).
 
 ## The cascade
 
@@ -36,11 +36,12 @@ Default: **one unwrap or one leaf per chat**. Continue into implementation only 
 ## Implement
 
 1. Read the leaf and its Settled block.
-2. Ship docs in the same change set as the code (`how_to_document.md`).
+2. Make the smallest complete change for the leaf (Ponytail). Ship docs in the same change set (`how_to_document.md`).
 3. Run the checks in `AGENTS.md`. Mark the leaf done only when every Done-when holds.
 
 ## Anti-patterns
 
+- Starting this loop when the user didn't ask for "grill" or "unwrap"
 - Implementing from an unwrap file before its leaves exist
 - Auto-resolving ambiguous product choices to keep moving
 - Silent drift from `CONTEXT.md` or an ADR

@@ -10,6 +10,7 @@ Paste into the PR description. Keep it short; the auditor re-checks everything.
 - **What changed:** 1–3 bullets
 - **Checks run:** lint ✅ typecheck ✅ unit N passed ✅ build ✅ e2e N passed ✅
 - **Settled (do not re-flag):** <links or bullets>
+- **Shortcuts:** <`shortcut:` comments added, each with its `docs/next_steps.md` bullet>
 
 ### Checklist for the auditor
 

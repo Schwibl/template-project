@@ -1,5 +1,7 @@
 # How to git
 
+These are part of done and are never cut (see Precedence in `AGENTS.md`).
+
 ## Branches
 
 Never commit to `main`. Branch from up-to-date `main`, push, open a PR. `main` is protected: CI must pass before merge.

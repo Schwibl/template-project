@@ -8,7 +8,8 @@ A starter for **AI-first development**: AI agents do most of the planning, build
 
 ```mermaid
 flowchart LR
-    H([Human]) -->|idea| G[Grill<br/>settle open questions]
+    H([Human]) -->|"grill"/"unwrap"| G[Grill<br/>settle open questions]
+    H -->|request| B
     G --> P[Leaf plan<br/>Settled + Done when]
     P --> B[Builder agent<br/>smallest complete change]
     B -->|PR + handoff| CI{{CI<br/>lint · typecheck · test · build · e2e}}
@@ -18,7 +19,7 @@ flowchart LR
     H -->|merge| M[(main)]
 ```
 
-1. **Plan before code.** A fuzzy request is _grilled_ (the agent asks short rounds of questions, each with a recommended answer) and turned into a _leaf plan_: locked decisions plus numbered steps with "Done when". See [`.prompts/base/how_to_cook.md`](.prompts/base/how_to_cook.md).
+1. **Plan when asked.** By default the builder ships the smallest working version. When the user says "grill" or "unwrap", the request is _grilled_ (the agent asks short rounds of questions, each with a recommended answer) and turned into a _leaf plan_: locked decisions plus numbered steps with "Done when". See [`.prompts/base/how_to_cook.md`](.prompts/base/how_to_cook.md).
 2. **Builder builds one leaf** on a branch, following the [Ponytail](https://github.com/DietrichGebert/ponytail) rules: the smallest change that fully solves the problem. It opens a PR with a [handoff](agents/handoff.md) checklist.
 3. **CI gates the PR**: lint, typecheck, unit tests, build, then Playwright e2e on desktop and mobile.
 4. **Auditor reviews before merge**: it re-runs the checks, walks the checklist, and grades findings P1–P3 with evidence. See [`agents/auditor.md`](agents/auditor.md).
