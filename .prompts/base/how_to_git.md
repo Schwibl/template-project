@@ -6,6 +6,16 @@ These are part of done and are never cut (see Precedence in `AGENTS.md`).
 
 Never commit to `main`. Branch from up-to-date `main`, push, open a PR. `main` is protected: CI must pass before merge.
 
+Branches are short-lived and named by type:
+
+- `feat/<topic>`: new feature
+- `fix/<topic>`: bug fix
+- `chore/<topic>`: tooling, deps, housekeeping
+- `ci/<topic>`: CI/CD pipelines
+- `docs/<topic>`: documentation only
+
+Every branch goes through a PR into `main`. CI checks plus the Vercel preview URL are the review and demo stand; there is no `develop` branch. `main` is production: nobody pushes to it directly.
+
 ## Commit messages
 
 ```text
@@ -13,6 +23,8 @@ Never commit to `main`. Branch from up-to-date `main`, push, open a PR. `main` i
 ```
 
 Examples: `[auth] Added session refresh on 401`, `[ci] Cached Playwright browsers`. No `wip`, `update`, `fix`, or present tense.
+
+Keep commits small and focused: one change per commit.
 
 ## Pull requests
 
