@@ -77,7 +77,7 @@ export function hashComments(text: string): CommentHit[] {
       i += 1;
       continue;
     }
-    if (c === '#') {
+    if (c === '#' && (i === 0 || /\s/.test(text[i - 1] ?? ''))) {
       const from = i;
       i += 1;
       let body = '';

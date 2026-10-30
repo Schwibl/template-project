@@ -42,6 +42,8 @@ describe('comment check', () => {
     expect(violationsIn('main.ts', page)).toEqual([]);
     expect(violationsIn('.env.example', 'KEY=1\n# note\n')).toEqual(['2: note']);
     expect(violationsIn('a.yml', 'name: "a # b"\n')).toEqual([]);
+    expect(violationsIn('a.yml', 'c: http://a#b\n')).toEqual([]);
+    expect(violationsIn('a.yml', 'c: value # note\n')).toEqual(['1: note']);
     expect(violationsIn('index.html', '<!-- note -->\n')).toEqual(['1: note']);
   });
 
