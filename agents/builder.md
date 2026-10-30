@@ -11,9 +11,11 @@ The user's request, or a leaf plan / ticket if one exists, plus `AGENTS.md`. Don
 1. Read the request (and its plan's **Settled** block, if any). A vague request gets the smallest working version; name what you skipped. Don't invent product or API behaviour you can't skip.
 2. Branch (`how_to_git.md`). Make the smallest complete change (Ponytail rules).
 3. New non-trivial logic gets one small test (Ponytail). Run lint, typecheck, test, build, and e2e when UI changed. Fix what you broke.
-4. Each shortcut: `shortcut:` comment plus a dated bullet in `docs/next_steps.md`.
+4. Each shortcut: a dated bullet in `docs/next_steps.md` only (no code comment).
 5. Update docs (`how_to_document.md`). Open a PR.
 6. Write the handoff (`agents/handoff.md`) into the PR description and stop.
+
+A behaviour change updates tests in the same PR. The auditor blocks otherwise. Paste the agent test report (`docs/quality/test-report.md`). The PR description opens with Impact (`docs/workflow/impact.md`).
 
 ## On audit findings
 

@@ -9,3 +9,4 @@ description: Write a handoff so another agent (or a fresh chat) can continue the
 2. Fill in `agents/handoff.md`. For a mid-task handoff, replace the checklist with **Next steps** (numbered, each with Done when).
 3. List what you skipped, what is broken, and any command that failed, with its output.
 4. Put it in the PR description, or in `.scratch/<feature>/handoff.md` if there is no PR yet.
+5. Open the PR description with Impact (`docs/workflow/impact.md`) before the handoff.

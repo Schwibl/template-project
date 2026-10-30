@@ -16,12 +16,26 @@ The PR, the builder's handoff, the plan it implements, and the project's **Settl
 
 Never use real customer data, real payments or production secrets while testing. Stop servers you started.
 
-Don't flag missing features the user didn't ask for; Ponytail skips them on purpose. Do flag a `shortcut:` comment with no matching `docs/next_steps.md` bullet, missing tests on new non-trivial logic, and anything cut from validation, accessibility, design rules or the git done gate.
+Don't flag missing features the user didn't ask for; Ponytail skips them on purpose. Do flag a shortcut with no dated `docs/next_steps.md` bullet, any code comment at all other than a tool directive that carries a reason, a license header, or a generated file, missing tests on new non-trivial logic, and anything cut from validation, accessibility, design rules or the git done gate.
+
+## Tests
+
+Block a behaviour change that does not update tests in the same PR (P1). Read failures from the agent test report (`docs/quality/test-report.md`): the test name, expected versus actual, the error and `file:line`, a likely cause, and the rerun command. A passing suite is one line with counts and duration.
 
 ## Report shape
 
+The report opens with Impact (`docs/workflow/impact.md`).
+
 ```markdown
 # Audit: <change> at `<sha>`
+
+## Impact
+
+Before: <what the user experienced>
+After: <what the user experiences>
+Load time: <ms or unchanged>
+Steps: <count>
+Errors: <what the user hits, or none>
 
 Audited <date, time zone>. Environment: <local / preview URL>, <what was stubbed>.
 
