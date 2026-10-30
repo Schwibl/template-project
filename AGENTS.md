@@ -36,11 +36,11 @@ On a conflict, the guard wins.
 
 Also never cut the no-comment rule, the doc line cap and maps, the test-update rule, or the merge gate.
 
-4. **No code comments.** Allowed only: tool directives that carry a reason, license headers, and generated files. This overrides the Ponytail lines that tell you to add a comment or a `shortcut:` comment.
+4. **No code comments.** Allowed only: tool directives that carry a reason, license headers, and generated files.
 
 ## Ponytail rules (imported)
 
-Source: https://raw.githubusercontent.com/DietrichGebert/ponytail/main/AGENTS.md ([DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail), MIT License, fetched 2026-10-16). Copied verbatim below, headings moved down two levels; the one indented _Project addition_ line is ours.
+Source: https://raw.githubusercontent.com/DietrichGebert/ponytail/main/AGENTS.md ([DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail), MIT License, fetched 2026-10-16). Copied below with headings moved down two levels. The indented _Project addition_ line is ours. The comment and shortcut lines follow the no-comment rule.
 
 ### Ponytail, lazy senior dev mode
 
@@ -65,12 +65,12 @@ Take the first option that fully works:
 - No abstraction, wrapper, type conversion, option, config, boilerplate or "for later" code nobody asked for. Keep values in the form the platform already gives you. Deletion beats addition. Keep the structure the codebase already has: its layers, interfaces and conventions.
   - _Project addition:_ here that means `src/` for app code with tests beside it (`*.test.ts`), `e2e/` for Playwright specs, `agents/` for role prompts, `skills/<name>/SKILL.md` for skills, `.prompts/base/` for habits, `docs/adr/` for decisions, and one root `package.json`.
 - The shortest working diff wins, once you know everything it must touch. A one-liner that needs decoding is not short.
-- Comment only the why the code cannot show, in one line.
+- No code comments. Allowed only: a tool directive that carries a reason, a license header, or a generated file.
 - Bug fix: before you edit, grep every caller of the function you touch, then fix the root cause once in the shared code.
 - Code you move or merge keeps its error handling and validation.
 - Between options of equal size, take the one that is correct on edge cases.
 - Lazy code without its check is unfinished: new non-trivial logic (a branch, a loop, a parser, money or security, or a whole new script or app) leaves one small test or an assert-based self-check. Trivial changes need none.
-- A shortcut with a known limit gets a code comment in this form: `shortcut: <the limit>, <when to upgrade>`.
+- A shortcut with a known limit is a dated bullet in `docs/next_steps.md` only (`- YYYY-MM-DD: <file> – <limit>, <when to upgrade>`).
 
 Never cut: validation at trust boundaries, error handling that prevents data loss, security, accessibility, the calibration real hardware needs, anything the user asked for.
 

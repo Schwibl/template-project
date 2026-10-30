@@ -2,7 +2,7 @@
 
 ## Ponytail
 
-The "Ponytail rules" section of `AGENTS.md` is copied from https://github.com/DietrichGebert/ponytail under this license:
+The "Ponytail rules" section of `AGENTS.md` is taken from https://github.com/DietrichGebert/ponytail under this license. The comment and shortcut lines follow this repo's no-comment rule:
 
 ```text
 MIT License

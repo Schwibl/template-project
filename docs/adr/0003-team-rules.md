@@ -18,4 +18,4 @@ Adopt the rules in `docs/policy/comments.md`, `docs/workflow/merge.md`, `docs/wo
 
 ## Consequences
 
-An agent opens the root map, then one folder map, then one file. Guard 4 in `AGENTS.md` overrides the Ponytail comment lines. A human still approves money, new accounts or secrets, and a destructive DB migration.
+An agent opens the root map, then one folder map, then one file. The Ponytail import follows the no-comment rule. A human still approves money, new accounts or secrets, and a destructive DB migration.

@@ -14,4 +14,4 @@ The allowed set is: tool directives that carry a reason, license headers, and ge
 
 `.env.example` lists keys and sample values with no comments. Explain a key in the README.
 
-The Ponytail import in `AGENTS.md` still has a one-line comment rule and a `shortcut:` comment rule. Precedence guard 4 overrides both. Do not add those comments.
+The Ponytail import in `AGENTS.md` follows this rule.
