@@ -16,7 +16,7 @@ The PR, the builder's handoff, the plan it implements, and the project's **Settl
 
 Never use real customer data, real payments or production secrets while testing. Stop servers you started.
 
-Don't flag missing features the user didn't ask for; Ponytail skips them on purpose. Do flag a `shortcut:` comment with no matching `docs/next_steps.md` bullet, missing tests on new non-trivial logic, and anything cut from validation, accessibility, design rules or the git done gate.
+Don't flag missing features the user didn't ask for; Ponytail skips them on purpose. Do flag a shortcut with no dated `docs/next_steps.md` bullet, any code comment at all other than a tool directive that carries a reason, a license header, or a generated file, missing tests on new non-trivial logic, and anything cut from validation, accessibility, design rules or the git done gate.
 
 ## Tests
 
