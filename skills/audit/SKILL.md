@@ -12,3 +12,5 @@ Follow `agents/auditor.md`. In short:
 3. Check each handoff item and Done-when at 390 px and 1440 px. Save screenshots and logs next to the report.
 4. Grade findings P1 (blocks merge), P2 (before release), P3 (can wait), each with evidence.
 5. Give a GO / NO-GO verdict and list what you could not check.
+6. Open the report with Impact (`docs/workflow/impact.md`). Block a behaviour change that does not update tests in the same PR.
+7. Read the agent test report (`docs/quality/test-report.md`): one line per passing suite; failures include expected versus actual, file and line, likely cause, and the rerun command.

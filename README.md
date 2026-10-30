@@ -15,17 +15,23 @@ flowchart LR
     B -->|PR + handoff| CI{{CI<br/>lint · typecheck · test · build · e2e}}
     CI -->|green| A[Auditor agent<br/>evidence-backed report]
     A -->|P1/P2 findings| B
-    A -->|GO| H
-    H -->|merge| M[(main)]
+    A -->|GO on exact SHA| T[Tech-lead<br/>squash-merge]
+    T -->|other PRs open| D[Devops<br/>test-merge]
+    D --> T
+    T --> M[(main)]
+    M --> V[Devops<br/>verify live]
+    H -->|money, secrets, destructive migration| T
 ```
 
 1. **Plan when asked.** By default the builder ships the smallest working version. When the user says "grill" or "unwrap", the request is _grilled_ (the agent asks short rounds of questions, each with a recommended answer) and turned into a _leaf plan_: locked decisions plus numbered steps with "Done when". See [`.prompts/base/how_to_cook.md`](.prompts/base/how_to_cook.md).
 2. **Builder builds one leaf** on a branch, following the [Ponytail](https://github.com/DietrichGebert/ponytail) rules: the smallest change that fully solves the problem. It opens a PR with a [handoff](agents/handoff.md) checklist.
 3. **CI gates the PR**: lint, typecheck, unit tests, build, then Playwright e2e on desktop and mobile.
 4. **Auditor reviews before merge**: it re-runs the checks, walks the checklist, and grades findings P1–P3 with evidence. See [`agents/auditor.md`](agents/auditor.md).
-5. **Human merges.** Hard-to-reverse choices are recorded as [ADRs](docs/adr/).
+5. **The PM bot (Tech-lead) squash-merges** when Auditor GO is on the exact head SHA, CI is green, and Devops has test-merged when other PRs are open. Devops then verifies live. A human still approves money, new accounts/secrets, and destructive DB migrations. Hard-to-reverse choices are recorded as [ADRs](docs/adr/).
 
 ## What's inside
+
+Start at [MAP.md](MAP.md).
 
 | Path                       | Purpose                                                             |
 | -------------------------- | ------------------------------------------------------------------- |
@@ -37,6 +43,11 @@ flowchart LR
 | `docs/agents/`             | Local ticket tracker and triage labels                              |
 | `src/`, `e2e/`             | Minimal Vite + TypeScript app, Vitest and Playwright samples        |
 | `.github/workflows/ci.yml` | PR check                                                            |
+| `MAP.md`                   | Root map of the doc, prompt, skill, and role indexes                |
+| `docs/workflow/`           | Merge gate and Impact                                               |
+| `docs/quality/`            | Tests and the agent test report                                     |
+| `docs/policy/`             | Which code comments are allowed                                     |
+| `docs/meta/`               | Layout, maps, the split ledger, and the map test                    |
 
 ## Quick start
 
@@ -49,6 +60,8 @@ npx playwright install chromium && npm run e2e
 ```
 
 Set `E2E_BASE_URL` to run the e2e specs against a deployed preview instead of a local build.
+
+When `E2E_BASE_URL` is set, Playwright does not start a local server. Only `VITE_`-prefixed variables reach the browser.
 
 ## Using it
 

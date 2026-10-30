@@ -9,7 +9,14 @@ Thin, always-loaded routing plus the Ponytail working rules (imported at the end
 - **document**: before claiming a feature done or leaving work incomplete: read `.prompts/base/how_to_document.md`
 - **role**: when you are told you are the builder or the auditor: read `agents/builder.md` or `agents/auditor.md`, and hand off with `agents/handoff.md`
 - **skill**: `skills/grill` only on "grill"/"unwrap"; `skills/handoff` and `skills/audit` when handing off or reviewing
-- **shortcut**: any known limit you leave behind: `shortcut:` comment plus a dated bullet in `docs/next_steps.md`
+- **shortcut**: any known limit you leave behind: a dated bullet in `docs/next_steps.md` only, with no code comment
+- **comments**: no code comments. Allowed only: tool directives that carry a reason, license headers, and generated files. Read `docs/policy/comments.md` before writing code.
+- **merge**: read `docs/workflow/merge.md` before merging. The PM bot (Tech-lead) squash-merges.
+- **layout**: before adding a doc, prompt, or skill, read `docs/meta/layout.md`.
+- **tests**: a behaviour change updates tests in the same PR. Report them with `docs/quality/test-report.md`.
+- **impact**: a PR, handoff, or audit opens with Impact. Read `docs/workflow/impact.md`.
+- **tech-lead**: when you are the PM bot, read `agents/tech-lead.md`.
+- **devops**: when you test-merge or verify live, read `agents/devops.md`.
 
 ## Repo facts
 
@@ -21,9 +28,15 @@ Thin, always-loaded routing plus the Ponytail working rules (imported at the end
 
 The Ponytail rules below win over every other rule in this repo, with these guards:
 
-1. **Shortcuts are tracked.** Every shortcut gets the `shortcut: <limit>, <when to upgrade>` comment in code **and** a dated bullet in `docs/next_steps.md` (`- YYYY-MM-DD: <file> – <limit>, <when to upgrade>`).
+On a conflict, the guard wins.
+
+1. **Shortcuts are tracked.** Every shortcut gets a dated bullet in `docs/next_steps.md` (`- YYYY-MM-DD: <file> – <limit>, <when to upgrade>`) and no code comment.
 2. **Plan-first only on request.** The grill → spec → tickets loop (`how_to_cook.md`, `skills/grill`) runs only when the user explicitly says "grill" or "unwrap". Otherwise build the smallest working version.
 3. **Never cut.** Hard design rules (if the project has any), accessibility, and the git done gate (feature branch, commit format, PR, per `how_to_git.md`) count as "anything the user asked for".
+
+Also never cut the no-comment rule, the doc line cap and maps, the test-update rule, or the merge gate.
+
+4. **No code comments.** Allowed only: tool directives that carry a reason, license headers, and generated files. This overrides the Ponytail lines that tell you to add a comment or a `shortcut:` comment.
 
 ## Ponytail rules (imported)
 

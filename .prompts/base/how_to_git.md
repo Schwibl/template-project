@@ -31,3 +31,4 @@ Keep commits small and focused: one change per commit.
 - One logical change per PR. Base: `main`.
 - Description: what changed, why, how it was checked, what was skipped.
 - The auditor reviews before merge (`agents/auditor.md`). Not done until the PR exists and CI is green.
+- Read `docs/workflow/merge.md` before merge.
